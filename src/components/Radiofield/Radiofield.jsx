@@ -2,6 +2,7 @@ import React, { useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
 import PropTypes from 'prop-types';
 import { FormHelperText, FormControlLabel, Radio } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 
 const Radiofield = (
   {
@@ -25,6 +26,9 @@ const Radiofield = (
     const RENDER_TIMES = useRef(0);
     const internalRef = useRef(null);
     const ref = innerRef ? innerRef : internalRef;
+
+    const theme = useTheme();
+    const errorColor = theme?.palette?.error?.main || '#d32f2f';
 
     const { control, events } = useFormContext();
 
@@ -64,14 +68,14 @@ const Radiofield = (
         labelPlacement: _labelPlacement,
         sx: {
             '& .MuiButtonBase-root': {
-                color: invalid ? '#d32f2f' : 'inherit'
+                color: invalid ? errorColor : 'inherit'
             },
             '& .MuiFormControlLabel-label': {
-                color: invalid ? '#d32f2f' : 'inherit',
+                color: invalid ? errorColor : 'inherit',
                 marginTop: '3px'
             },
             '& .MuiFormControlLabel-asterisk': {
-                color: invalid ? '#d32f2f' : 'inherit'
+                color: invalid ? errorColor : 'inherit'
             },
             ...(_sx || {}),
         },
