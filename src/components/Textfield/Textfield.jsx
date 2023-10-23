@@ -1,27 +1,27 @@
-import { useEffect, useImperativeHandle, useRef, useState } from 'react';
+import React, { useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
 import PropTypes from 'prop-types';
 import { TextField as MuiTextfield, FormHelperText } from '@mui/material';
 
 const Textfield = (
-    {
-        name,
-        label,
-        helperText,
-        startAdornment,
-        endAdornment,
-        required,
-        disabled,
-        sx,
-        size,
-        shrink,
-        type,
-        isUpperCase,
-        fullWidth,
-        innerRef,
-        test,
-        ...props
-    }
+  {
+      name,
+      label,
+      helperText,
+      startAdornment,
+      endAdornment,
+      required,
+      disabled,
+      sx,
+      size,
+      shrink,
+      type,
+      isUpperCase,
+      fullWidth,
+      innerRef,
+      test,
+      ...props
+  }
 ) => {
     const RENDER_TIMES = useRef(0);
     const internalRef = useRef(null);
@@ -70,9 +70,9 @@ const Textfield = (
             },
             ...(_disabled && {
                 '& .MuiInputBase-root:hover, & .MuiInputBase-input:hover, & .MuiFormLabel-root:hover, & .MuiFormControl-root:hover':
-                {
-                    cursor: 'not-allowed',
-                }
+                  {
+                      cursor: 'not-allowed',
+                  }
             }),
             ...(_sx || {}),
         },
@@ -126,51 +126,49 @@ const Textfield = (
         };
     });
 
-    const InputLabelProps = {
-        shrink: false
-    };
+    const InputLabelProps = {};
     if (_shrink) {
         InputLabelProps.shrink = true;
     }
 
     if (test) {
-        console.log('Textfield ' + name + ' RENDER');
+        console.log('Radiofield ' + name + ' RENDER');
     }
 
     return (
-        <>
-            <MuiTextfield
-                inputRef={r => ref.current = r}
-                {...field}
-                value={field.value || ''}
-                {...props}
-                {...managedProps}
-                InputLabelProps={InputLabelProps}
-                InputProps={{
-                    ...(isUpperCase && { inputProps: { style: { textTransform: 'uppercase' } } }),
-                    startAdornment: _startAdornment,
-                    endAdornment: _endAdornment,
-                }}
-                autoComplete="off"
-                fullWidth={fullWidth}
-                error={invalid}
-                onChange={async (e) => {
-                    const newValue = e.target.value;
+      <>
+          <MuiTextfield
+            inputRef={r => ref.current = r}
+            {...field}
+            value={field.value || ''}
+            {...props}
+            {...managedProps}
+            InputLabelProps={InputLabelProps}
+            InputProps={{
+                ...(isUpperCase && { inputProps: { style: { textTransform: 'uppercase' } } }),
+                startAdornment: _startAdornment,
+                endAdornment: _endAdornment,
+            }}
+            autoComplete="off"
+            fullWidth={fullWidth}
+            error={invalid}
+            onChange={async (e) => {
+                const newValue = e.target.value;
 
-                    if (events?.[name]?.beforeChange) {
-                        await events[name].beforeChange({ oldValue: field.value, newValue });
-                    }
+                if (events?.[name]?.beforeChange) {
+                    await events[name].beforeChange({ oldValue: field.value, newValue });
+                }
 
-                    field.onChange(newValue);
+                field.onChange(newValue);
 
-                    if (events?.[name]?.afterChange) {
-                        await events[name].afterChange({ oldValue: field.value, newValue });
-                    }
-                }}
-            />
-            {invalid && <FormHelperText error>{error?.message || 'Errore'}</FormHelperText>}
-            {!invalid && _helperText && <FormHelperText>{_helperText}</FormHelperText>}
-        </>
+                if (events?.[name]?.afterChange) {
+                    await events[name].afterChange({ oldValue: field.value, newValue });
+                }
+            }}
+          />
+          {invalid && <FormHelperText error>{error?.message || 'Errore'}</FormHelperText>}
+          {!invalid && _helperText && <FormHelperText>{_helperText}</FormHelperText>}
+      </>
     );
 }
 
@@ -211,7 +209,7 @@ Textfield.defaultProps = {
 };
 
 export const useTextfield = (props) => {
-    const inputRef = useRef();
+    const inputRef = useRef(null);
 
     const Component = <Textfield {...props} innerRef={inputRef} />
 

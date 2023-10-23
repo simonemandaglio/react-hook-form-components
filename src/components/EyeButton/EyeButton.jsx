@@ -1,10 +1,10 @@
-import { useImperativeHandle, useState } from 'react';
+import React, { useImperativeHandle, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Icon, IconButton } from '@mui/material';
 
 /**
  * The `EyeButton` component is a snippet for making visibile or not some text 
- * into a Textfield
+ * into a Radiofield
  * 
  * Example:
  * ```jsx

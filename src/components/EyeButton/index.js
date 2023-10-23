@@ -1,1 +1,1 @@
-export { default } from './EyeButton.jsx';
+export { default as EyeButton } from './EyeButton.jsx';
