@@ -1,6 +1,6 @@
 {
   "name": "@simonemandaglio/react-hook-form-components",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Helpfull mui components for creating powerfull and performing form with react js",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
