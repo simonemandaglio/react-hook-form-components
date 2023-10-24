@@ -3,7 +3,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
 import external from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
-import terser  from '@rollup/plugin-terser';
+// import terser  from '@rollup/plugin-terser';
 
 import packageJson from "./package.json" assert { type: "json" };
 
@@ -35,7 +35,7 @@ export default [
                 minimize: true,
             }),
             external(),
-            terser(),
+            // terser(),
         ]
     }
 ];

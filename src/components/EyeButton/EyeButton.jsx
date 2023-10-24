@@ -4,7 +4,7 @@ import { Icon, IconButton } from '@mui/material';
 
 /**
  * The `EyeButton` component is a snippet for making visibile or not some text 
- * into a Radiofield
+ * into a Checkfield
  * 
  * Example:
  * ```jsx

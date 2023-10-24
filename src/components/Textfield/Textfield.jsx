@@ -132,7 +132,7 @@ const Textfield = (
     }
 
     if (test) {
-        console.log('Radiofield ' + name + ' RENDER');
+        console.log('Checkfield ' + name + ' RENDER');
     }
 
     return (
